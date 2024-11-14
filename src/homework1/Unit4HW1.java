@@ -6,6 +6,10 @@ public class Unit4HW1 {
         guessingGame();
         tiredTurtle();
         notATamagotchi();
+        int bob = 5;
+        System.out.println(bob);
+        bob = 8;
+
 
     }
 
