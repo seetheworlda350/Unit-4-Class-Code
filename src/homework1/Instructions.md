@@ -46,7 +46,7 @@ Problem: Write a Java program to simulate the hunger level of your virtual pet o
 1. Start with a hunger level of 0\.
 2. Every hour (iteration), increase the hunger level by 10.
 3. Ask the user if they want to feed the pet.
-4. If the user feeds the pet, decrease the hunger level by 25 (ensure it doesn't go below 0).
+4. If the user feeds the pet, decrease the hunger level by 10 (ensure it doesn't go below 0).
 5. If the hunger level reaches 40 or above, inform the user that the pet is unhappy.
 6. End the simulation after 5 hours or if the user decides not to feed the pet when it's unhappy.
 
