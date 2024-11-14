@@ -1,6 +1,6 @@
 package homework1;
 
-public class Main {
+public class Unit4HW1 {
 
     public static void main(String[] args) {
         guessingGame();
