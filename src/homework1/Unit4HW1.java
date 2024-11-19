@@ -2,7 +2,6 @@ package homework1;
 
 
 import java.util.Scanner;
-import java.util.Random;
 
 
 public class Unit4HW1 {
@@ -103,12 +102,11 @@ public class Unit4HW1 {
                 hunger += 10;
             }
             if (hunger >= 50) {
-                System.out.println("Your pet has died of hunger.");
+                System.out.println("End of simulation. Your pet has died of hunger.");
                 break;
             }
             if (hunger == 40) {
                 System.out.println("Feed your pet soon, it is getting hungry.");
-                hunger += 10;
             }
             hour++;
         }
