@@ -16,22 +16,31 @@ public class Woodle {
         while (!guess.equals(word)) {
             int correct = 0;
             int wrongSpot = 0;
+            boolean[] matched = new boolean[5];
             System.out.println("Enter your guess: ");
             guess = input.nextLine();
-            boolean correctLetter = false;
+
+            // Check if the entered word is 5 letters long using substring and equals
+            while (guess.length() < 5 || !guess.substring(0, 5).equals(guess)) {
+                System.out.println("The word must be 5 letters long. Please enter a new guess: ");
+                guess = input.nextLine();
+            }
+
             attempts++;
 
             for (int j = 0; j < 5; j++) {
                 if (word.substring(j, j + 1).equals(guess.substring(j, j + 1))) {
                     correct++;
+                    matched[j] = true;
                 }
             }
 
             for (int j = 0; j < 5; j++) {
                 if (!word.substring(j, j + 1).equals(guess.substring(j, j + 1)) && word.indexOf(guess.substring(j, j + 1)) != -1) {
                     for (int k = 0; k < 5; k++) {
-                        if (word.substring(k, k + 1).equals(guess.substring(j, j + 1))) {
+                        if (word.substring(k, k + 1).equals(guess.substring(j, j + 1)) && !matched[k]) {
                             wrongSpot++;
+                            matched[k] = true;
                             break;
                         }
                     }
