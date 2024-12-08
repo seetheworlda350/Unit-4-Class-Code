@@ -1,6 +1,5 @@
 package Woodle;
 
-import java.io.*;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -9,16 +8,7 @@ public class Woodle {
         System.out.println("-----------Woodle-----------");
         System.out.println("I have a 5 letter word that you need to guess.");
         Random randLine = new Random();
-        int lineNumber = randLine.nextInt(3104);
-        String word = "";
-        try (BufferedReader br = new BufferedReader(new FileReader("src/Woodle/WordBank.txt"))) {
-            for (int i = 0; i <= lineNumber; i++) {
-                word = br.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        boolean validWord = false;
+        String word = "apple";
         String guess = "";
         Scanner input = new Scanner(System.in);
         int attempts = 0;
@@ -26,60 +16,35 @@ public class Woodle {
         while (!guess.equals(word)) {
             int correct = 0;
             int wrongSpot = 0;
-            boolean[] matched = new boolean[5];
             System.out.println("Enter your guess: ");
             guess = input.nextLine();
+            boolean correctLetter = false;
             attempts++;
 
-            while (validWord == false) {
-                try (BufferedReader br = new BufferedReader(new FileReader("src/Woodle/BigWordBank.txt"))) {
-                    for (int i = 0; i <= 15908; i++) {
-                        if (guess.equals(br.readLine())) {
-                            validWord = true;
-                            break;
-                        }
-                    }
-                        if (validWord == false) {
-                            System.out.println("That is not a valid 5 letter word. Please enter a valid 5 letter word: ");
-                            guess = input.nextLine();
-                        }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
             for (int j = 0; j < 5; j++) {
-                if (word.charAt(j) == guess.charAt(j)) {
+                if (word.substring(j, j + 1).equals(guess.substring(j, j + 1))) {
                     correct++;
-                    matched[j] = true;
                 }
             }
 
             for (int j = 0; j < 5; j++) {
-                if (word.charAt(j) != guess.charAt(j) && word.indexOf(guess.charAt(j)) != -1) {
+                if (!word.substring(j, j + 1).equals(guess.substring(j, j + 1)) && word.indexOf(guess.substring(j, j + 1)) != -1) {
                     for (int k = 0; k < 5; k++) {
-                        if (word.charAt(k) == guess.charAt(j) && !matched[k]) {
+                        if (word.substring(k, k + 1).equals(guess.substring(j, j + 1))) {
                             wrongSpot++;
-                            matched[k] = true;
                             break;
                         }
                     }
                 }
             }
-
-
-
 
             System.out.println(correct + " correct");
             System.out.println(wrongSpot + " incorrect location, correct letter");
-            validWord = false;
         }
         if (attempts == 1) {
             System.out.println("Congratulations, you guessed the word in " + attempts + " try!");
-            validWord = false;
         } else {
             System.out.println("Congratulations, you guessed the word in " + attempts + " tries!");
-            validWord = false;
         }
     }
 }

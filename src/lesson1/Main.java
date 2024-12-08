@@ -28,10 +28,11 @@ public class Main {
         System.out.println("I'm thinking of a number between 1 and 10.");
         System.out.println("See if you can guess the number!");
         int secretNumber = (int) (Math.random() * 10 + 1);
+        double secretNumber2 = Math.random()*10 + 1;
         // for debugging System.out.println("Test: "+secretNumber);
         System.out.print("Enter your guess: ");
         int userGuess = input.nextInt();
-        while (secretNumber != userGuess) {
+        while (secretNumber2 != userGuess) {
             System.out.println("Try again!");
             System.out.print("Enter your guess: ");
             userGuess = input.nextInt();
